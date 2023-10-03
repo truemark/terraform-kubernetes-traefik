@@ -7,8 +7,8 @@ resource "helm_release" "traefik" {
   create_namespace = var.traefik_create_namespace
   values           = [
     templatefile("${path.module}/values.yml", {
-      isDefaultClass = var.traefik_ingress_isDefaultClass
-      entrypoints    = var.traefik_enabled_entrypoints
+      is_default_class = var.traefik_ingress_is_default_class
+      entrypoints      = var.traefik_enabled_entrypoints
     })
   ]
 }

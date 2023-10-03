@@ -82,7 +82,7 @@ metrics:
 tracing: { }
 globalArguments:
   - "--global.checknewversion"
-  ${entrypoints}
+${entrypoints}
 service:
   enabled: true
   single: true

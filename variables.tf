@@ -28,6 +28,7 @@ variable "traefik_create_namespace" {
   description = "Whether to create the Traefik namespace if it doesn't exist."
 }
 
+#TODO: add this to proper loop format instead of passing as string
 # Configuration for Traefik entrypoints.
 variable "traefik_enabled_entrypoints" {
   type        = string

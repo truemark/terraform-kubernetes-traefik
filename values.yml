@@ -3,12 +3,12 @@ deployment:
   kind: DaemonSet
   lifecycle:
     preStop:
-     exec:
-       command: ["/bin/sh", "-c", "sleep 60"]
+      exec:
+        command: [ "/bin/sh", "-c", "sleep 60" ]
 # Create a default IngressClass for Traefik
 ingressClass:
   enabled: true
-  isDefaultClass: ${isDefaultClass}
+  isDefaultClass: ${is_default_class}
 # Enable experimental features
 experimental:
   v3:
@@ -22,12 +22,12 @@ experimental:
 ingressRoute:
   dashboard:
     enabled: true
-    annotations: {}
-    labels: {}
+    annotations: { }
+    labels: { }
     matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
-    entryPoints: ["traefik"]
-    middlewares: []
-    tls: {}
+    entryPoints: [ "traefik" ]
+    middlewares: [ ]
+    tls: { }
 # Customize updateStrategy of traefik pods
 updateStrategy:
   type: RollingUpdate
@@ -43,13 +43,13 @@ providers:
     allowCrossNamespace: true
     allowExternalNameServices: true
     allowEmptyServices: true
-    namespaces: []
-      # - "default"
+    namespaces: [ ]
+    # - "default"
   kubernetesIngress:
     enabled: true
     allowExternalNameServices: true
     allowEmptyServices: true
-    namespaces: []
+    namespaces: [ ]
     publishedService:
       enabled: false
 ## Logs
@@ -59,15 +59,15 @@ logs:
     level: ERROR
   access:
     enabled: true
-    filters: {}
+    filters: { }
     format: json
     fields:
       general:
         defaultmode: keep
-        names: {}
+        names: { }
       headers:
         defaultmode: keep
-        names: {}
+        names: { }
 metrics:
   prometheus:
     entryPoint: metrics
@@ -75,14 +75,14 @@ metrics:
       enabled: true
       labels: { }
       annotations: { }
-#    serviceMonitor:
-#      jobLabel: traefik
-#      interval: 30s
-#      honorLabels: true
-tracing: {}
+    serviceMonitor:
+      jobLabel: traefik
+      interval: 30s
+      honorLabels: true
+tracing: { }
 globalArguments:
   - "--global.checknewversion"
-${entrypoints}
+  ${entrypoints}
 service:
   enabled: true
   single: true

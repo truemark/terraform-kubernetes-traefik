@@ -8,7 +8,7 @@ resource "helm_release" "traefik" {
   values           = [
     templatefile("${path.module}/values.yml", {
       is_default_class = var.traefik_ingress_is_default_class
-      entrypoints    = var.traefik_enabled_entrypoints
+      entrypoints      = var.traefik_enabled_entrypoints
     })
   ]
 }
